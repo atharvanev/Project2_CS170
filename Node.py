@@ -8,4 +8,4 @@ class Node:
         return random.uniform(0,100) #filler
 
     def __str__(self):
-        return f"Features: {sorted(self.features)} "
+        return f"using features: {sorted(self.features)} accuracy is {self.sorted}% "
