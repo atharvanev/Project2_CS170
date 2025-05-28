@@ -1,9 +1,12 @@
 from Classifier import Classifier
 from Validator import Validator
-from fileRead import fileRead
+from fileRead import fileRead, compressRange, normalize
+import time
 def NNinterface():
     classifier = Classifier()
     quit = ""
+    SMdataset = fileRead("ProjectFiles/small-test-dataset.txt")
+    LGdataset = fileRead("ProjectFiles/large-test-dataset.txt")
     while(quit != "q"):
         print( "Welcome to Atharva Nevasekar(aneva018) and Rishi Dave (rdave009)\'s Nearest Neighbor Algorithm.")
         print()
@@ -12,13 +15,11 @@ def NNinterface():
         file = input("Please enter 'sm' to use the small dataset or 'lg' to use the large dataset. You will be reprompted if you do not input a proper value.\n")
         while(file != "sm" and file != "lg"):
             file = input("Please enter 'sm' to use the small dataset or 'lg' to use the large dataset.\n")
-        maxF = 0
         if(file == "sm"):
-            maxF = 10
-            dataset = fileRead("ProjectFiles/small-test-dataset.txt")
+            dataset = SMdataset
         elif(file == "lg"):
-            maxF = 40
-            dataset = fileRead("ProjectFiles/large-test-dataset.txt")
+            dataset = LGdataset
+        maxF = len(dataset[0]) - 1
         featureCountString = ""
         print()
         while True:
@@ -50,16 +51,24 @@ def NNinterface():
             except ValueError:
                 print("Invalid input. Please enter a whole number.")
         print()
-
+        starttime = time.time()
+        normalize(dataset, featureSet)
+        endtime = time.time()
+        timeElapsed = endtime - starttime
         validator = Validator(featureSet, dataset, classifier)
-        accuracy = validator.validate()
+        accuracy, trainingTime, testingTime = validator.validate()
+        print("Dataset Normalize Time: " + str(timeElapsed) + " seconds.")
+        print("Training Time: " + str(trainingTime) + " seconds.")
+        print("Testing Time: " + str(testingTime) + " seconds.")
+        print()
+
         res = "Using features {"
         res += ", ".join(str(fe) for fe in featureSet)
 
         res+="}, we can validate test data with "
         res+= str(accuracy)
         res += " accuracy."
-
+        
         print(res)
         print()
 

@@ -1,5 +1,5 @@
 import math
-
+from fileRead import compressRange
 
 class Classifier:
 
