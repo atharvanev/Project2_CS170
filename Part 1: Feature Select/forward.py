@@ -2,15 +2,15 @@ from evaluate import evaluate
 
 def forward(n):
     scores = {frozenset([i]):evaluate(i) for i in range(1,n+1)}
-    print(scores)
+    #print(scores)
     cur = []
     unused = set(range(1,n+1))
 
-    overallMax = 0
-    overallScore = 0 
+    overallMax = []
+    overallScore = evaluate()
     curScore = 0 #defined outside so i can refer to it i there is an overall decreased score at end for the warning
 
-    print(f"Using no features and “random” evaluation, I get an accuracy of {evaluate()}% Beginning search.")
+    print(f"Using no features and “random” evaluation, I get an accuracy of {overallScore}% Beginning search.")
    
     while unused:
         curScore = 0 #scores comparision only for iteration level not whole tree

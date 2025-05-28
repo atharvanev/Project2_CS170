@@ -12,11 +12,11 @@ def backward(n):
             next.remove(j)
             scores[frozenset(next)] = evaluate(next)
 
-    overallMax = 0
-    overallScore = 0 
+    overallMax = [1,2,3,4]
+    overallScore = evaluate(i)
     curScore = 0 #defined outside so i can refer to it i there is an overall decreased score at end for the warning
 
-    print(f"Using All features and “random” evaluation, I get an accuracy of {evaluate(i)}% Beginning search.")
+    print(f"Using All features and “random” evaluation, I get an accuracy of {overallScore}% Beginning search.")
    
     while unremoved:
         curScore = 0 #scores comparision only for iteration level not whole tree
