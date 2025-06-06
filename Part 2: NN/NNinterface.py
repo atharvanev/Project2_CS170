@@ -5,8 +5,8 @@ import time
 def NNinterface():
     classifier = Classifier()
     quit = ""
-    SMdataset = fileRead("ProjectFiles/small-test-dataset.txt")
-    LGdataset = fileRead("ProjectFiles/large-test-dataset.txt")
+    SMdataset = fileRead("ProjectFiles/small.txt")
+    LGdataset = fileRead("ProjectFiles/large.txt")
     while(quit != "q"):
         print( "Welcome to Atharva Nevasekar(aneva018) and Rishi Dave (rdave009)\'s Nearest Neighbor Algorithm.")
         print()
