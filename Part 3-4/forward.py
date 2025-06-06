@@ -1,7 +1,7 @@
 from evaluate import evaluate
-def forward(featureset, dataset,classifier):
+def forward(featureset, dataset,classifier,K):
     n = len(featureset)
-    intial = evaluate([],dataset,classifier)
+    intial = evaluate([],dataset,classifier,K)
     scores = {frozenset([]):intial}
     #print(scores)
     cur = []
@@ -20,7 +20,7 @@ def forward(featureset, dataset,classifier):
         for j in unused:
             next = cur.copy()
             next.append(j)
-            scores[frozenset(next)] = evaluate(next,dataset,classifier)
+            scores[frozenset(next)] = evaluate(next,dataset,classifier,K)
 
         for i in unused:
             cur.append(i)

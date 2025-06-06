@@ -1,9 +1,9 @@
 from evaluate import evaluate
 
-def backward(featureset, dataset,classifier):
+def backward(featureset, dataset,classifier,K):
     n =len(featureset)
     i = [x for x in range(1,n+1)]
-    intial = evaluate(i,dataset,classifier)
+    intial = evaluate(i,dataset,classifier,K)
     scores = {frozenset(i):intial}
 
     cur = i.copy()
@@ -24,7 +24,7 @@ def backward(featureset, dataset,classifier):
         for j in unremoved:
             next = cur.copy()
             next.remove(j)
-            scores[frozenset(next)] = evaluate(next, dataset, classifier)
+            scores[frozenset(next)] = evaluate(next, dataset, classifier,K)
 
         for i in unremoved:
             cur.remove(i)

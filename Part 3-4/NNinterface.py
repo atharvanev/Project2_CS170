@@ -19,6 +19,7 @@ def NNinterface():
     classifier = Classifier()
     quit = ""
     option = ""
+    K = ""
     while(quit != "q"):
         print( "Welcome to Atharva Nevasekar(aneva018) and Rishi Dave (rdave009)\'s Feature Selection Algorithm")
         print()
@@ -33,13 +34,22 @@ def NNinterface():
                 option = input("Please reselect a valid option: ")
             else:
                 break
-            
+        while True:
+            print()
+            print()
+            print("Please Select K for the KNN algorithim")
+            print("     1 \n     3\n  5\n 7\n")
+            K = int(input("Select your option: "))
+            choices = [1,3,5,7]
+            if K not in choices:
+                K = input("Please reselect a valid option: ")
+            else:
+                break
         
 
         maxF = len(dataset[0]) - 1
         print()
         print(f"This dataset has {maxF} features (not including the class attribute), with {len(dataset)} instances.") 
-        featureCountString = ""
         print()
 
 
@@ -49,30 +59,11 @@ def NNinterface():
         print("Done")
        
         if option == "1":
-            forward(featureSet,dataset,classifier)
+            forward(featureSet,dataset,classifier,K)
         else:
-            backward(featureSet,dataset,classifier)
+            backward(featureSet,dataset,classifier,K)
 
-        # print()
-        # starttime = time.time()
-        # endtime = time.time()
-        # timeElapsed = endtime - starttime
-        # validator = Validator(featureSet, dataset, classifier)
-        # accuracy, trainingTime, testingTime = validator.validate()
-        # print("Dataset Normalize Time: " + str(timeElapsed) + " seconds.")
-        # print("Training Time: " + str(trainingTime) + " seconds.")
-        # print("Testing Time: " + str(testingTime) + " seconds.")
-        # print()
-
-        # res = "Using features {"
-        # res += ", ".join(str(fe) for fe in featureSet)
-
-        # res+="}, we can validate test data with "
-        # res+= str(accuracy)
-        # res += " accuracy."
-        
-        # print(res)
-        # print()
+      
 
         quit = input("Press 'q' to quit or any other button to continue!\n")
         
