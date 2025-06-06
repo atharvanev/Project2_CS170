@@ -46,7 +46,7 @@ def backward(featureset, dataset,classifier):
         cur.remove(maxDigit)
 
         print('\n')
-        print(f"Feature set {display} was best, accuracy is {scores[frozenset(cur)]}%")
+        print(f"Feature set {sorted(cur)} was best, accuracy is {scores[frozenset(cur)]}%")
 
         unremoved.remove(maxDigit)
 

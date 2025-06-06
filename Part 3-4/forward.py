@@ -41,7 +41,7 @@ def forward(featureset, dataset,classifier):
         cur.append(maxDigit)
 
         print('\n')
-        print(f"Feature set {display} was best, accuracy is {scores[frozenset(cur)]}%")
+        print(f"Feature set {sorted(cur)} was best, accuracy is {scores[frozenset(cur)]}%")
 
         unused.remove(maxDigit)
 
