@@ -38,7 +38,7 @@ def NNinterface():
             print()
             print()
             print("Please Select K for the KNN algorithim")
-            print("     1 \n     3\n  5\n 7\n")
+            print("     1 \n     3\n     5\n     7\n")
             K = int(input("Select your option: "))
             choices = [1,3,5,7]
             if K not in choices:
